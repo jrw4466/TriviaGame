@@ -1,20 +1,21 @@
 var correct = 1;
 var incorrect = 1;
+//var unanswered = 1;
 
 var trivia = {
-	question1: "What's your first name?",
-	question2: "What's your last name?",
-	question3: "What's your favorite color?",
-	answers1: ["jake1", "jake2", "jake3"],
-	answers2: ["sarah1", "sarah2", "sarah3"],
-	answers3: ["blue", "red", "green"],
+	question1: "What's my favorite color?",
+	question2: "What's my favorite NBA basketball team?",
+	question3: "What's my favorite band?",
+	answers1: ["Red", "Blue", "Green"],
+	answers2: ["Spurs", "Rockets", "Mavericks"],
+	answers3: ["The Naked and Famous", "Maroon 5", "Nickelback"],
 }
 
-//var populateQuestions = function (button) {
 
 
 $(document).ready(function() {
 	
+
 	$("#trivia").hide();
 	$("#results").hide();
 
@@ -34,6 +35,34 @@ $(document).ready(function() {
 	$("#a3-2").html(trivia.answers3[1]);
 	$("#a3-3").html(trivia.answers3[2]);
 
+	function scoreCount() {
+
+	var true1 = document.getElementById("radio1-1").checked;
+	var true2 = document.getElementById("radio2-1").checked;
+	var true3 = document.getElementById("radio2-1").checked;
+	console.log(true1);
+	console.log(true2);
+	console.log(true3);
+
+
+	if (true1 === true) {
+		document.getElementById("correct").innerHTML = correct++;
+	} else {
+		document.getElementById("incorrect").innerHTML = incorrect++;
+	}
+
+	if (true2 === true) {
+		document.getElementById("correct").innerHTML = correct++;
+	} else {
+		document.getElementById("incorrect").innerHTML = incorrect++;
+	}
+
+	if (true3 === true) {
+		document.getElementById("correct").innerHTML = correct++;
+	} else {
+		document.getElementById("incorrect").innerHTML = incorrect++;;
+	}
+	}
 
 
 	$("#button-1").on("click", function() {
@@ -42,19 +71,30 @@ $(document).ready(function() {
 		$("#trivia").show();
 		$("#results").hide();
 
+	var mins = .1;  //Set the number of minutes you need
+    var secs = mins * 60;
+    var currentSeconds = 0;
+    var currentMinutes = 0;
+   
+    setInterval(Decrement,1000); 
+
+    function Decrement() {
+        currentMinutes = Math.floor(secs / 60);
+        currentSeconds = secs % 60;
+        if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
+        secs--;
+        document.getElementById("timerCount").innerHTML = currentMinutes + ":" + currentSeconds; 
+        if(secs !== -1) setTimeout('Decrement()',1000);
+    }
+
 });
 	
 	$("#button-2").on("click", function() {
 		$("#button-1").hide();
 		$("#trivia").hide();
 		$("#results").show();
+		scoreCount();
+
 
 	});
 });
-
-
-
-	//$(".btn").on("click", function () {
-		//var amount = +$(this).val();
-		//score = amount + score;
-		//$("#score2").html(score);
