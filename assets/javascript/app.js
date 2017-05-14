@@ -71,7 +71,7 @@ $(document).ready(function() {
 		$("#trivia").show();
 		$("#results").hide();
 
-	var mins = .1;  //Set the number of minutes you need
+	var mins = .5;  //Set the number of minutes you need
     var secs = mins * 60;
     var currentSeconds = 0;
     var currentMinutes = 0;
